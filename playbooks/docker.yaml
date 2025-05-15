@@ -8,7 +8,7 @@
           - docker
           - ncdu
           - vim
-          #- rsyslog
+          # - rsyslog
           - htop
         update_cache: true
     - name: Add the user 'carebot', appending the group 'docker' to the user's groups
@@ -17,7 +17,7 @@
         groups: docker
     - name: Copy daemon.json to set up log rotation policy
       ansible.builtin.copy:
-        src: ../files/daemon.json
+        src: daemon.json
         dest: /etc/docker/daemon.json
         owner: root
         group: root

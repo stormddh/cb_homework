@@ -5,6 +5,10 @@
     - name: Install orthanc
       ansible.builtin.package:
         name: orthanc
+    - name: Ensure that orthanc is started
+      ansible.builtin.service:
+        name: orthanc
+        state: started
     - name: Change orthanc default password
       ansible.builtin.package:
         name: orthanc
