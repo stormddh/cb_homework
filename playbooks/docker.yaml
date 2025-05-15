@@ -1,14 +1,34 @@
 ---
 - name: Set up a target with Docker
   hosts: myhosts
+  gather_facts: true
   tasks:
-    - name: Install docker, ncdu, vim, rsyslog, htop
+    - name: Install required packages
       ansible.builtin.package:
         name:
-          - docker
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        update_cache: true
+    - name: Add Docker’s official GPG key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    - name: Add Docker repository
+      ansible.builtin.apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+        state: present
+    - name: Install Docker
+      ansible.builtin.package:
+        name: docker-ce
+        update_cache: true
+    - name: Install ncdu, vim, rsyslog, htop
+      ansible.builtin.package:
+        name:
           - ncdu
           - vim
-          # - rsyslog
+          - rsyslog
           - htop
         update_cache: true
     - name: Add the user 'carebot', appending the group 'docker' to the user's groups
