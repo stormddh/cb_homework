@@ -1,0 +1,7 @@
+- name: Add user
+  hosts: myhosts
+  tasks:
+    - name: Add the user 'carebot', appending the group 'docker' to the user's groups
+      ansible.builtin.user:
+        name: carebot
+        groups: docker 

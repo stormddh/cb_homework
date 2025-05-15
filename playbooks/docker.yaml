@@ -1,0 +1,11 @@
+- name: Set docker container log rotation policy 
+  hosts: myhosts
+  tasks:
+
+  - name: Copy daemon.json to set up log rotation policy
+    ansible.builtin.copy:
+      src: ../daemon.json
+      dest: /etc/docker/daemon.json
+      owner: root
+      group: root
+      mode: '0644'
