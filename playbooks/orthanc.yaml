@@ -1,7 +1,10 @@
+---
 - name: Install orthanc
   hosts: myhosts
   tasks:
     - name: Install orthanc
       ansible.builtin.package:
         name: orthanc
-        state: latest
+    - name: Change orthanc default password
+      ansible.builtin.package:
+        name: orthanc

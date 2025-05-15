@@ -1,11 +1,24 @@
-- name: Set docker container log rotation policy 
+---
+- name: Set up a target with Docker
   hosts: myhosts
   tasks:
-
-  - name: Copy daemon.json to set up log rotation policy
-    ansible.builtin.copy:
-      src: ../daemon.json
-      dest: /etc/docker/daemon.json
-      owner: root
-      group: root
-      mode: '0644'
+    - name: Install docker, ncdu, vim, rsyslog, htop
+      ansible.builtin.package:
+        name:
+          - docker
+          - ncdu
+          - vim
+          #- rsyslog
+          - htop
+        update_cache: true
+    - name: Add the user 'carebot', appending the group 'docker' to the user's groups
+      ansible.builtin.user:
+        name: carebot
+        groups: docker
+    - name: Copy daemon.json to set up log rotation policy
+      ansible.builtin.copy:
+        src: ../files/daemon.json
+        dest: /etc/docker/daemon.json
+        owner: root
+        group: root
+        mode: "0644"
