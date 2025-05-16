@@ -1,0 +1,8 @@
+---
+- name: Install and configure Docker and Orthanc server
+  hosts: myhosts
+  gather_facts: true
+  become: true
+  roles:
+    - docker
+    - orthanc

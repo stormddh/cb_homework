@@ -1,0 +1,4 @@
+---
+# file: group_vars/atlanta
+orthanc_username: orthanc
+orthanc_password: orthanc

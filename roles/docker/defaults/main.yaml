@@ -1,0 +1,5 @@
+---
+docker_target_distro: "{{ ansible_distribution | lower }}"
+docker_gpg_key_url: "https://download.docker.com/linux/{{ docker_target_distro }}/gpg"
+docker_repo_url: "deb https://download.docker.com/linux/{{ docker_target_distro }} {{ ansible_distribution_release }} stable"
+docker_user: "carebot"
