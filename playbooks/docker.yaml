@@ -2,6 +2,7 @@
 - name: Set up a target with Docker
   hosts: myhosts
   gather_facts: true
+  become: true
   tasks:
     - name: Install required packages
       ansible.builtin.package:

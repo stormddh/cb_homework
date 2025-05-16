@@ -1,6 +1,7 @@
 ---
 - name: Install orthanc
   hosts: myhosts
+  become: true
   tasks:
     - name: Install orthanc
       ansible.builtin.package:
