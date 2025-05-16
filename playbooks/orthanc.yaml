@@ -5,7 +5,7 @@
     - name: Install orthanc
       ansible.builtin.package:
         name: orthanc
-    - name: Copy daemon.json to set up log rotation policy
+    - name: Copy orthanc service definition to systemd
       ansible.builtin.copy:
         src: orthanc.service
         dest: /etc/systemd/system/orthanc.service
@@ -13,10 +13,11 @@
         group: root
         mode: "0644"
     - name: Ensure that orthanc is started
-      ansible.builtin.service:
+      ansible.builtin.systemd:
         name: orthanc
         state: started
         enabled: true
+        daemon_reload: true
     - name: Change orthanc default password
       ansible.builtin.command:
         cmd: orthanc-admin change-password  --user=orthanc --password=orthanc
