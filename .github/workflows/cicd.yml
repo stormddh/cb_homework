@@ -20,7 +20,7 @@ jobs:
         uses: ansible/ansible-lint@main
         with:
           setup_python: "true"
-          working_directory: "playbooks/"
+          working_directory: ""
 
   test:
     name: Test Ansible Playbooks
@@ -41,5 +41,4 @@ jobs:
 
       - name: Run playbooks in check mode
         run: |-
-          ansible-playbook -i inventory/hosts.yaml -vv playbooks/docker.yaml
-          ansible-playbook -i inventory/hosts.yaml -vv playbooks/orthanc.yaml
+          ansible-playbook -i inventory/hosts.yaml -v setup.yaml
