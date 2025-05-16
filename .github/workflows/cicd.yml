@@ -41,5 +41,5 @@ jobs:
 
       - name: Run playbooks in check mode
         run: |-
-          ansible-playbook -i inventory/hosts.yaml --check playbooks/docker.yaml
-          ansible-playbook -i inventory/hosts.yaml --check playbooks/orthanc.yaml
+          ansible-playbook -i inventory/hosts.yaml playbooks/docker.yaml
+          ansible-playbook -i inventory/hosts.yaml playbooks/orthanc.yaml
