@@ -21,8 +21,8 @@
         daemon_reload: true
     - name: Change password for the default orthanc user in configuration file
       ansible.builtin.replace:
-        path: "/etc/orthanc/orthanc.json"
-        regexp: '"orthanc"\s*:\s*"orthanc"'
+        path: "/etc/orthanc/credentials.json"
+        regexp: '// "alice"\s*:\s*"alicePassword"'
         replace: '"orthanc" : "{{ new_orthanc_value }}"'
       vars:
-        new_orthanc_value: "new_password"
+        new_orthanc_value: "orthanc"
