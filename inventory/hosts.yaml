@@ -4,6 +4,4 @@ myhosts:
     test:
       ansible_host: 127.0.0.1
       ansible_connection: local
-    gcp-vm:
-      ansible_host: 35.241.207.35
-      ansible_user: stormddh
+
